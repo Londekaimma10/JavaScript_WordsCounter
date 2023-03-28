@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Count</title>
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(169, 157, 159);
+  }
+
+  .container{
+    width: 850px;
+    height: 450px;
+    background-color: aliceblue;
+    margin: auto;
+    position: relative;
+    top: 15%;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .boxs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 20px;
+    gap: 30;
+  }
+
+  .box{
+    display: flex;
+    align-items: center;
+  }
+
+  .box input{
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  .box p{
+    font-size: 20px;
+    font-weight: 600;
+    margin-inline: 10px;
+    color: rgb(165, 26, 30);
+  }
+
+  #textArea{
+    width: 95%;
+    height: 280px;
+    border-radius: 10px;padding: 10px;
+  }
+</style>
+
+<div class="container">
+    <h2>Word Counter</h2>
+    <div class="boxs">
+      <div class="box">
+        <p>Words</p>
+        <input type="number" disabled value="0" id="word">
+      </div>
+      <div class="box">
+        <p>Characters</p>
+        <input type="number" disabled value="0" id="char">
+      </div>
+    </div>
+    <textarea id="textArea"></textarea>
+  </div>
+
+  <script>
+  const textArea = document.getElementById('textArea');
+  const character = document.getElementById('char');
+  const words = document.getElementById('word');
+
+  textArea.addEventListener('input', function(){
+    let text = this.value;
+    text = text.trim();
+    let char = text.length;
+    character.value = char;
+    let newText = text.split(" ");
+    let cleanWords = newText.filter((element) => {
+        return element != "";
+    })
+    //console.log(cleanWords);
+    words.value = cleanWords.length;
+  });
+  </script>
+</html>
